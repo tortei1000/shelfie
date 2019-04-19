@@ -12,6 +12,9 @@ const { SERVER_PORT, CONNECTION_STRING } = process.env;
 massive(CONNECTION_STRING)
   .then(dbInstance => {
     app.set("db", dbInstance);
+    app.listen(SERVER_PORT, () => {
+      console.log(`Server listening on port ${SERVER_PORT}.`);
+    });
   }).catch(err => console.log(err));
 
 
@@ -22,6 +25,3 @@ massive(CONNECTION_STRING)
   
 
 
-app.listen(SERVER_PORT, () => {
-  console.log(`Server listening on port ${SERVER_PORT}.`);
-});

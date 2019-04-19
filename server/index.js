@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const massive = require("massive");
-
+const controller = require("./controller")
 
 
 const app = express();
@@ -15,6 +15,8 @@ massive(CONNECTION_STRING)
   }).catch(err => console.log(err));
 
 
+app.get("/api/inventory", controller.display)
+  
 
 
 app.listen(SERVER_PORT, () => {

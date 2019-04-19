@@ -22,8 +22,8 @@ export default class Form extends Component {
   }
 
   handleClick = () => {
-    let newRecipe = this.state
-    this.createRecipe(newRecipe)
+    let newItem = this.state
+    this.createRecipe(newItem)
   }
 
   cancelClick = () => {
@@ -32,8 +32,8 @@ export default class Form extends Component {
     })
   }
 
-  addToInventory = (newRecipe) => {
-    axios.post("/api/recipes", newRecipe).then(res => {
+  addToInventory = (newItem) => {
+    axios.post("/api/recipes", newItem).then(res => {
     }).catch(err => console.log("error", err))
   }
 

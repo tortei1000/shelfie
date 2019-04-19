@@ -9,22 +9,24 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      inventory : [{name:'red kite', price: 100, imgurl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb2IxIyr8X6jYRnui7sZEOrFEZJmS1SAmI8vFdxu4in_SqVbGJ"}]
+      inventory : []
     }
   }
 
-  // componentDidMount() {
-  //   axios.get("/api/products").then((res) => {
-      
-  //     this.setState({
-  //       inventory: res.data
-  //     })
-  //   }).catch(err => console.log("error", err))
-  // }
+  componentDidMount() {
+    console.log("am I even", this.state.inventory)
+    axios.get("/api/inventory").then((res) => {
+      this.setState({
+        inventory: res.data
+      })
+    }).catch(err => console.log("error", err))
+  }
 
   render() {
+    console.log("whats wrong with me ", this.state.inventory)
     return (
       <div>
+        
         <Header />
         <Form />
         <Dashboard inventory={this.state.inventory}/>

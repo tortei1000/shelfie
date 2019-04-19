@@ -15,7 +15,10 @@ massive(CONNECTION_STRING)
   }).catch(err => console.log(err));
 
 
-app.get("/api/inventory", controller.display)
+  app.get("/api/inventory", controller.display)
+  app.post("/api/inventory", controller.create)
+  app.put("/api/inventory/:id", controller.update)
+  app.delete("/api/inventory:id", controller.delete)
   
 
 

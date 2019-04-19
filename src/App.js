@@ -28,7 +28,7 @@ class App extends Component {
       <div>
         
         <Header />
-        <Form />
+        <Form getRequest={this.componentDidMount}/>
         <Dashboard inventory={this.state.inventory}/>
         
       </div>

@@ -1,9 +1,10 @@
 module.exports = {
   create: (req, res) => {
     const dbInstance = req.app.get('db')
-    const { title, image_url, description, ingredients } = req.body
+    const { name, img, price} = req.body
+    console.log(name, img, price)
 
-    dbInstance.create_product([title, image_url, description, ingredients]).then(() => res.sendStatus(200))
+    dbInstance.create_product([name, price, img]).then(() => res.sendStatus(200))
       .catch(err => {
         res.status(500).send({ errorMessage: `something went wrong in creation` })
         console.log(err)

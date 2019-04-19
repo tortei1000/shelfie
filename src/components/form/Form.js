@@ -23,18 +23,20 @@ export default class Form extends Component {
 
   handleClick = () => {
     let newItem = this.state
-    this.createRecipe(newItem)
+    this.addToInventory(newItem)
   }
 
   cancelClick = () => {
     this.setState({
-      name:"", price: 0, imgurl:""
+      name:"", price: 0, img:""
     })
   }
 
   addToInventory = (newItem) => {
-    axios.post("/api/recipes", newItem).then(res => {
+    axios.post("/api/inventory", newItem).then(res => {
     }).catch(err => console.log("error", err))
+    this.props.getRequest()
+    this.cancelClick()
   }
 
   render() {
@@ -42,7 +44,7 @@ export default class Form extends Component {
       <div>
         <input name="name" onChange={this.handleChange} />
         <input name="price" onChange={this.handleChange} />
-        <input name="imgurl" onChange={this.handleChange} />
+        <input name="img" onChange={this.handleChange} />
         <button onClick={this.handleClick}>add to inventory</button>
         <button onClick={this.cancelClick}>cancel </button>
 

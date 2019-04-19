@@ -1,2 +1,2 @@
-insert into recipe(name, price, image_url)
-values($1, $2, $3,)
+insert into product(name, price, img)
+values($1, $2, $3);

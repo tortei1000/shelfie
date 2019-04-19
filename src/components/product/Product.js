@@ -13,6 +13,7 @@ export default class Product extends Component {
         <h1>{item.name}</h1>
         <h3>{item.price}</h3>
         <img src={item.img} width="300px"/>
+        <button onClick={()=>this.props.deleteItem(item)}>delete</button>
       </div>
     )
 

@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import Product from '../product/Product'
-
+import axios from 'axios'
 
 
 export default class Dashboard extends Component {
+
+  deleteItem = (item) => {
+    console.log("look at me", item)
+    axios.delete(`/api/inventory/${item.id}`).then(res => {
+      this.props.getRequest()
+      
+    }).catch(err => console.log("error", err))
+  }
 
   render() {
     console.log("here I am before", this.props.inventory)
@@ -13,7 +21,7 @@ export default class Dashboard extends Component {
         {inventory[0] ? inventory.map((item)=>{
           return (
             <div>
-              <Product item={item} />
+              <Product item={item} deleteItem={this.deleteItem}/>
             </div>
           )
         }):null

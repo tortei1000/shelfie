@@ -8,9 +8,9 @@ export default class Dashboard extends Component {
   deleteItem = (item) => {
     console.log("look at me", item)
     axios.delete(`/api/inventory/${item.id}`).then(res => {
-      this.props.getRequest()
       
     }).catch(err => console.log("error", err))
+    this.props.getRequest()
   }
 
   render() {

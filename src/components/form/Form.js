@@ -37,6 +37,7 @@ export default class Form extends Component {
     }).catch(err => console.log("error", err))
     this.props.getRequest()
     this.cancelClick()
+    
   }
 
   render() {

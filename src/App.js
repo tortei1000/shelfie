@@ -22,14 +22,22 @@ class App extends Component {
     }).catch(err => console.log("error", err))
   }
 
+  refreshData = () => {
+    axios.get("/api/inventory").then((res) => {
+      this.setState({
+        inventory: res.data
+      })
+    }).catch(err => console.log("error", err))
+  }
+
   render() {
     console.log("whats wrong with me ", this.state.inventory)
     return (
       <div>
         
         <Header />
-        <Form getRequest={this.componentDidMount}/>
-        <Dashboard inventory={this.state.inventory} getRequest={this.componentDidMount}/>
+        <Form getRequest={this.refreshData}/>
+        <Dashboard inventory={this.state.inventory} getRequest={this.refreshData}/>
         
       </div>
     );
